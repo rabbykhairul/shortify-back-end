@@ -8,6 +8,8 @@ app.get("/", (req, res) => {
   );
 });
 
+app.use("/api/short-url", require("./api/short-url"));
+
 app.listen(PORT, () => {
   console.log(`Listening at port ${PORT}...`);
 });
