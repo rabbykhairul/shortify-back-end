@@ -1,8 +1,17 @@
+const ShortURLModel = require("../models/shortUrl.model");
+
 const CHARS_STRING =
   "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz";
 
-const getShortCode = (originalURL) => {
-  return buildShortCode();
+const getShortCode = async (originalURL) => {
+  while (true) {
+    try {
+      const shortCode = buildShortCode();
+      const model = new ShortURLModel({ shortCode, originalURL });
+      await model.save();
+      return shortCode;
+    } catch (err) {}
+  }
 };
 
 const buildShortCode = () => {
@@ -19,3 +28,4 @@ const getRandomChar = () => {
 module.exports = {
   getShortCode,
 };
+// vfnZ3yzCaYuty47Z
