@@ -3,6 +3,9 @@ const app = express();
 const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 
+// connect to database
+require("./db_connection");
+
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
