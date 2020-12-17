@@ -25,7 +25,12 @@ const getRandomChar = () => {
   return CHARS_STRING[randomIdx];
 };
 
+const getOriginalURL = async (shortCode) => {
+  const result = await ShortURLModel.findOne({ shortCode });
+  return result ? result.originalURL : null;
+};
+
 module.exports = {
   getShortCode,
+  getOriginalURL,
 };
-// vfnZ3yzCaYuty47Z
